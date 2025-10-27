@@ -14,7 +14,7 @@ def generate_password(master_secret, site_key, version, length):
     """
     
     # 1. تعریف مجموعه کاراکترها (مجموعه ویژه قوی‌تر شد)
-    SPECIAL_CHARS = "!@#$%^&*()-_=+[]{}|;:,.<>/?"
+    SPECIAL_CHARS = "!@#$%!"
     UPPER_CHARS = string.ascii_uppercase
     LOWER_CHARS = string.ascii_lowercase
     DIGITS = string.digits
@@ -101,7 +101,7 @@ with col2:
         "📏 طول پسورد", 
         min_value=4, 
         max_value=64, 
-        value=16, # مقدار 16 به عنوان پیش‌فرض امن‌تر است
+        value=10, # مقدار 16 به عنوان پیش‌فرض امن‌تر است
         step=1,
         help="طول پسورد نهایی. حداقل 4."
     )
@@ -142,4 +142,5 @@ if st.session_state.generated_password:
     st.info("🔒 پسورد تولید شده (برای کپی روی آیکون کلیک کنید):")
     
     # این ویجت معادل Entry readonly + دکمه Copy است
+
     st.code(st.session_state.generated_password, language=None)
